@@ -61,3 +61,5 @@ Statistics:
   Latency StdDev (s):   0.192944
 ```
 
+## Credits
+Inspired by [github.com/guessi/docker-dnsperf](https://github.com/guessi/docker-dnsperf)

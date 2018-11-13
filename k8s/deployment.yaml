@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsperf
+  labels:
+    app: dnsperf
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: dnsperf
+  template:
+    metadata:
+      labels:
+        app: dnsperf
+    spec:
+      containers:
+        - name: dnsperf
+          image: theo01/dnsperf:latest
+          args:
+            - -q
+            - "1000"
+            - -s
+            # Replace the ip address with kubernetes dns service.
+            # kubectl get -n kube-system svc coredns -o go-template='{{.spec.clusterIP|printf "%s\n"}}'
+            - "172.31.0.10"
